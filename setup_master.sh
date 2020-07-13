@@ -1,4 +1,5 @@
 #!/bin/sh
+# curl https://raw.githubusercontent.com/L1NNA/L1NNA-cluster/master/setup_master.sh | bash
 sudo bash -c 'apt-get update && apt-get install -y apt-transport-https
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
