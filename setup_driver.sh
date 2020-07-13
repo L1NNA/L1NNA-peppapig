@@ -11,7 +11,5 @@ sudo apt-get update
 # install GPU driver:
 sudo apt-get install -y --no-install-recommends nvidia-driver-450
 
-nvidia-smi
-
-echo 'please reboot your system'
+echo 'please reboot your system and use nvidia-smi to verify driver installation'
 
