@@ -32,6 +32,11 @@ sudo systemctl enable kubelet && sudo systemctl start kubelet
 
 # sudo kubeadm init --apiserver-advertise-address=$1
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+# - kubeadm docs
+# There are pod network implementations where the master also plays a role in allocating a set of network address space for each node. 
+# When using flannel as the pod network (described in step 3), specify --pod-network-cidr=10.244.0.0/16. 
+# This is not required for any other networks besides Flannel.
+
 
 sudo cp /etc/kubernetes/admin.conf $HOME/
 sudo chown $(id -u):$(id -g) $HOME/admin.conf
