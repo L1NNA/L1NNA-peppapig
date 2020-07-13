@@ -31,7 +31,7 @@ sudo systemctl enable docker && sudo systemctl start docker
 sudo systemctl enable kubelet && sudo systemctl start kubelet
 
 # sudo kubeadm init --apiserver-advertise-address=$1
-sudo kubeadm init
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 sudo cp /etc/kubernetes/admin.conf $HOME/
 sudo chown $(id -u):$(id -g) $HOME/admin.conf
