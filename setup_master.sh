@@ -102,8 +102,16 @@ kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=clust
 # kubectl proxy
 # then visit: http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default
 
+
+# install prometheus+grafana for monitoring
+kubectl apply --filename https://raw.githubusercontent.com/giantswarm/prometheus/master/manifests-all.yaml
+# visit: kubectl port-forward --namespace monitoring service/grafana 8001:3000 
+# with ssh tunnel 8001
+# default usr: admin/admin
+
 # list all pods
 kubectl get pods --all-namespaces
+
 
 # done
 echo 'finished. you need to manually add export KUBECONFIG=$HOME/admin.conf to your .bashrc to use kubectl'
