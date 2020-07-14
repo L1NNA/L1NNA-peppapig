@@ -2,8 +2,9 @@
 # curl https://raw.githubusercontent.com/L1NNA/L1NNA-cluster/master/test_node.sh | bash
 
 
-echo 'Testing docker with GPU device'
-docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
+# the new nvidida-toolkit does not support device plugin integartion yet.
+# echo 'Testing docker with GPU device'
+# docker run --gpus all nvidia/cuda:10.0-base nvidia-smi
 
 
 echo 'Testing GPU pod on the cluster'
