@@ -49,9 +49,46 @@ export KUBECONFIG=$HOME/admin.conf
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 sudo systemctl restart kubelet
 
-# curl https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/examples/post-install.sh | bash
-
+# enalbe pod deployment on master node: [optional, but needed for our setup]
+kubectl taint nodes --all node-role.kubernetes.io/master-
 
 # install helm:
+kubectl --namespace kube-system create serviceaccount tiller
+kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+helm init --service-account tiller --history-max 100 --wait --upgrade
+# the client/serve version may be unsynced. 'upgrade' to remove such possibility
 
+# set docker default runtime to nvidia-runtime (on gpu node)
+sudo apt-get install jq
+jq '."default-runtime"="nvidia"' /etc/docker/daemon.json | sudo tee /etc/docker/daemon.json
+
+# install nvidia device plugin
+kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.6.0/nvidia-device-plugin.yml
+
+# label node with GPU device
+docker info | grep nvidia && kubectl label nodes `kubectl get nodes -o=custom-columns=NAME:.metadata.name | sed -n '1!p'` hardware-type=NVIDIAGPU
+
+# label node with specific GPU model
+for pod in `kubectl get pods -n kube-system -o=custom-columns=NAME:.metadata.name | grep nvidia-device-plugin-daemonset`; do
+	gpu=$(kubectl exec -it -n kube-system $pod -- nvidia-smi -q | \
+		grep 'Product Name' | head -n 1)
+
+	label=$(echo $GPU | cut -d ':' -f 2 | xargs | tr '\r' '')
+	label=$(echo ${label// /-})
+
+	node=$(kubectl get pod -n kube-system $pod \
+		-o=custom-columns=NODE:.spec.nodeName | tail -n 1)
+
+	kubectl label nodes ${node} "nvidia.com/brand=${label}"
+	kubectl label nodes ${node} hardware-type=NVIDIAGPU
+done
+
+# list all pods
+kubectl get pods -n kube-system
+
+# test run:
+kubectl run gpu-test --rm -t -i --restart=Never --image=nvidia/cuda --limits=nvidia.com/gpu=1 nvidia-smi
+
+# done
+echo 'finished. you need to manually add export KUBECONFIG=$HOME/admin.conf to your .bashrc to use kubectl'
 
