@@ -88,13 +88,11 @@ for pod in `kubectl get pods -n kube-system -o=custom-columns=NAME:.metadata.nam
 	kubectl label nodes ${node} hardware-type=NVIDIAGPU
 done
 
-# list all pods
-kubectl get pods -n kube-system
 
 # test run:
 kubectl run gpu-test --rm -t -i --restart=Never --image=nvidia/cuda --limits=nvidia.com/gpu=1 nvidia-smi
 
-# install dashboard:
+# install dashboard: (added a dashboard serviceaccount to access the cluster)
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 kubectl create serviceaccount dashboard -n default
 kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard
@@ -103,6 +101,9 @@ kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=clust
 # visit dashboard you will need: (with ssh tunnel)
 # kubectl proxy
 # then visit: http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default
+
+# list all pods
+kubectl get pods --all-namespaces
 
 # done
 echo 'finished. you need to manually add export KUBECONFIG=$HOME/admin.conf to your .bashrc to use kubectl'
