@@ -67,7 +67,7 @@ jq '."default-runtime"="nvidia"' /etc/docker/daemon.json | sudo tee /etc/docker/
 kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.6.0/nvidia-device-plugin.yml
 
 # label node with GPU device
-docker info | grep nvidia && kubectl label nodes `kubectl get nodes -o=custom-columns=NAME:.metadata.name | sed -n '1!p'` hardware-type=NVIDIAGPU
+sudo docker info | grep nvidia && kubectl label nodes `kubectl get nodes -o=custom-columns=NAME:.metadata.name | sed -n '1!p'` hardware-type=NVIDIAGPU
 
 # label node with specific GPU model
 for pod in `kubectl get pods -n kube-system -o=custom-columns=NAME:.metadata.name | grep nvidia-device-plugin-daemonset`; do
