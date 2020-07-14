@@ -60,7 +60,7 @@ helm init --service-account tiller --history-max 100 --wait --upgrade
 # the client/serve version may be unsynced. 'upgrade' to remove such possibility
 
 # set docker default runtime to nvidia-runtime (on gpu node)
-sudo apt-get install jq
+sudo apt-get install -y jq
 jq '."default-runtime"="nvidia"' /etc/docker/daemon.json | sudo tee /etc/docker/daemon.json
 
 # install nvidia device plugin
