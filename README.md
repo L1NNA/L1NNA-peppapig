@@ -30,7 +30,7 @@ kubectl get,describe services,pv,pvc --all-namespaces
 proxy/forward:
 ```
 kubectl proxy --address='0.0.0.0'
-kubectl port-forward --namespace monitoring service/grafana 3000:8001 (8001=>3000)
+kubectl port-forward --namespace monitoring service/grafana 8001:3000 (8001=>3000)
 ```
 
 delete:
