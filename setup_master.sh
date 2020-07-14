@@ -58,6 +58,7 @@ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
 kubectl --namespace kube-system create serviceaccount tiller
 kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 helm init --service-account tiller --history-max 100 --wait --upgrade
+helm version
 # the client/serve version may be unsynced. 'upgrade' to remove such possibility
 
 # set docker default runtime to nvidia-runtime (on gpu node)
