@@ -94,6 +94,16 @@ kubectl get pods -n kube-system
 # test run:
 kubectl run gpu-test --rm -t -i --restart=Never --image=nvidia/cuda --limits=nvidia.com/gpu=1 nvidia-smi
 
+# install dashboard:
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+kubectl create serviceaccount dashboard -n default
+kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard
+# to get seceret: 
+# kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+# visit dashboard you will need: (with ssh tunnel)
+# kubectl proxy
+# then visit: http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default
+
 # done
 echo 'finished. you need to manually add export KUBECONFIG=$HOME/admin.conf to your .bashrc to use kubectl'
 
