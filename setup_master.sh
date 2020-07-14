@@ -62,6 +62,8 @@ helm init --service-account tiller --history-max 100 --wait --upgrade
 # set docker default runtime to nvidia-runtime (on gpu node)
 sudo apt-get install -y jq
 jq '."default-runtime"="nvidia"' /etc/docker/daemon.json | sudo tee /etc/docker/daemon.json
+sudo systemctl restart docker
+export KUBECONFIG=$HOME/admin.conf
 
 # install nvidia device plugin
 kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.6.0/nvidia-device-plugin.yml
