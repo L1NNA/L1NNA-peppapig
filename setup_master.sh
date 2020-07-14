@@ -101,6 +101,7 @@ kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=clust
 # visit dashboard you will need: (with ssh tunnel)
 # kubectl proxy
 # then visit: http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default
+# to remove: kubectl delete namespace kubernetes-dashboard
 
 
 # install prometheus+grafana for monitoring
@@ -108,6 +109,7 @@ kubectl apply --filename https://raw.githubusercontent.com/giantswarm/prometheus
 # visit: kubectl port-forward --namespace monitoring service/grafana 8001:3000 
 # with ssh tunnel 8001
 # default usr: admin/admin
+# to remove: kubectl delete namespace monitoring
 
 # list all pods
 kubectl get pods --all-namespaces
