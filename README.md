@@ -1,6 +1,6 @@
 # L1NNA cluster setup
 
-### Setup master node
+### Setup Master Node
 
 Install GPU driver:
 ```
@@ -20,7 +20,7 @@ curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_jhub.sh
 ```
 
 
-### kubectl/helm cheatsheet
+### Kubectl/Helm Cheatsheet
 
 preset:
 ```
