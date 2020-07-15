@@ -2,15 +2,22 @@
 
 ### Setup master node
 
-
-
-
-
-
-### Add in worker node
-
-
-
+Install GPU driver:
+```
+curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_driver.sh | bash
+```
+Install Kubernetes stack + Nvidia runtime + monitoring stack:
+```
+curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_master.sh | bash
+```
+Statically provision persistent volumes (based on each partitions under /media/)
+```
+curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_storage.sh | bash
+```
+Setup Jupyter hub (this will take a while as we need to compile a new docker image):
+```
+curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_jhub.sh | bash
+```
 
 
 ### kubectl/helm cheatsheet
