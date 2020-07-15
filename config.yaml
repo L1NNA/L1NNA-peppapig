@@ -2,6 +2,10 @@ proxy:
   secretToken: "peppa-tkn"
   service:
     type: ClusterIP
+hub:
+  extraConfig:
+    myConfig.py: |
+      c.ServerProxy.servers = {"command":["code-server","--port","{port}","--auth","none","--disable-telemetry"," --extensions-dir","/home/jovyan/.vscode_extensions/","--user-data-dir","/home/jovyan/.vscode_data/"],"absolute_url":"False","launcher_entry":{"title":"VS Code"}}
 singleuser:
   image:
     name: jupyter/datascience-notebook
@@ -19,6 +23,7 @@ singleuser:
     - display_name: "Single GPU Server"
       description: "Spawns a server with access to one GPU (1-core/1Gi/50Gihdd)"
       kubespawner_override:
+        image: l1nna/peppapig:tf-2.1
         cpu_limit: 1
         mem_limit: 1G
         extra_resource_limits:
@@ -26,6 +31,7 @@ singleuser:
     - display_name: "Dual GPU Server"
       description: "Spawns a server with access to two GPUs (2-core/4Gi/50Gihdd)"
       kubespawner_override:
+        image: l1nna/peppapig:tf-2.1
         cpu_limit: 2
         mem_limit: 4G
         extra_resource_limits:
