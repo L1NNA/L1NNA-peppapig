@@ -1,5 +1,5 @@
 proxy:
-  secretToken: ""
+  secretToken: "peppa-tkn"
   service:
     type: ClusterIP
 singleuser:
