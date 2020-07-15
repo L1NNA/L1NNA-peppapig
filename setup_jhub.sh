@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_jhub.sh | bash
 # make sure kubectl will work
 export KUBECONFIG=$HOME/admin.conf
 
