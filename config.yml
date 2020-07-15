@@ -1,0 +1,39 @@
+proxy:
+  secretToken: ""
+  service:
+    type: ClusterIP
+singleuser:
+  image:
+    name: jupyter/datascience-notebook
+    tag: ea01ec4d9f57
+  defaultUrl: "/lab"
+  extraEnv:
+    GRANT_SUDO: "yes"
+    NOTEBOOK_ARGS: "--allow-root"
+  uid: 0
+  cmd: start-singleuser.sh
+  storage:
+    dynamic:
+      storageClass: local-hdd
+  profileList:
+    - display_name: "Single GPU Server"
+      description: "Spawns a server with access to one GPU (1-core/1Gi/50Gihdd)"
+      kubespawner_override:
+        cpu_limit: 1
+        mem_limit: 1G
+        extra_resource_limits:
+          nvidia.com/gpu: 1
+    - display_name: "Dual GPU Server"
+      description: "Spawns a server with access to two GPUs (2-core/4Gi/50Gihdd)"
+      kubespawner_override:
+        cpu_limit: 2
+        mem_limit: 4G
+        extra_resource_limits:
+          nvidia.com/gpu: 2
+    - display_name: "CPU Server"
+      description: "Spawns a server with access to more CPU only (2-core/6Gi/50Gihdd)"
+      kubespawner_override:
+        cpu_limit: 2
+        mem_limit: 6G
+        extra_resource_limits:
+          nvidia.com/gpu: 0
