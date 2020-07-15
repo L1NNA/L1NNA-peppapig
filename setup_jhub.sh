@@ -5,12 +5,8 @@ export KUBECONFIG=$HOME/admin.conf
 
 
 # create storage class
-
-
-kubectl create -f storageClass.yaml
-kubectl create -f persistentVolume.yaml
-
-openssl rand -hex 32
+wget https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/config.yaml
+sed -i -e 's/peppa-tkn/'$(openssl rand -hex 32)'/g' /config.yaml
 
 
 helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
@@ -25,10 +21,10 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub \
   --namespace $NAMESPACE  \
   --version=0.9.0 \
   --values config.yaml
-# update with changes in config.yaml:
-# helm upgrade $RELEASE jupyterhub/jupyterhub --version=0.9.0  --values config.yaml --recreate-pods 
 
-# install jupyter hub
+echo 'done'
+echo 'to update with any new changes in config.yaml:'
+echo 'helm upgrade $RELEASE jupyterhub/jupyterhub --version=0.9.0  --values config.yaml --recreate-pods'
 
 
 
