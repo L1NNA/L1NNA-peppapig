@@ -21,7 +21,7 @@ ALLOW_KUBECTL="${input:-$ALLOW_KUBECTL}"
 
 CLUSTER_NAME=peppa-pig
 
-helm install --version v0.10.0 botkube --namespace botkube \
+helm install --version v0.10.0  --name botkube botkube --namespace botkube \
   --set communications.slack.enabled=true \
   --set communications.slack.channel=$SLACK_CHANNEL_NAME \
   --set communications.slack.token=$SLACK_API_TOKEN_FOR_THE_BOT \
