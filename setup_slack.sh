@@ -9,7 +9,7 @@ helm repo add infracloudio https://infracloudio.github.io/charts
 helm repo update
 
 echo "you need to obtain your slack api token by installing this app to your workspace:"
-echo "https://l1nna.slack.com/apps/AF5DZLHPC-botkube"
+echo "https://slack.com/apps/AF5DZLHPC-botkube"
 read -p "Enter slack api token: " SLACK_API_TOKEN_FOR_THE_BOT
 read -p "Enter slack channel name: " SLACK_CHANNEL_NAME
 
