@@ -15,7 +15,7 @@ echo "https://www.botkube.io/privacy/"
 read -p "Enter slack api token: " SLACK_API_TOKEN_FOR_THE_BOT
 read -p "Enter slack channel name: " SLACK_CHANNEL_NAME
 
-ALLOW_KUBECTL="yes"
+ALLOW_KUBECTL="true"
 read -e -i "$ALLOW_KUBECTL" -p "Allow kubectl? (true/false): " input
 ALLOW_KUBECTL="${input:-$ALLOW_KUBECTL}"
 
