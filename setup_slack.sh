@@ -10,6 +10,8 @@ helm repo update
 
 echo "you need to obtain your slack api token by installing this app to your workspace:"
 echo "https://slack.com/apps/AF5DZLHPC-botkube"
+echo "please also review their privacy policy for current version"
+echo "https://www.botkube.io/privacy/"
 read -p "Enter slack api token: " SLACK_API_TOKEN_FOR_THE_BOT
 read -p "Enter slack channel name: " SLACK_CHANNEL_NAME
 
@@ -19,7 +21,7 @@ ALLOW_KUBECTL="${input:-$ALLOW_KUBECTL}"
 
 CLUSTER_NAME=peppa-pig
 
-echo helm install --version v0.10.0 botkube --namespace botkube \
+helm install --version v0.10.0 botkube --namespace botkube \
   --set communications.slack.enabled=true \
   --set communications.slack.channel=$SLACK_CHANNEL_NAME \
   --set communications.slack.token=$SLACK_API_TOKEN_FOR_THE_BOT \
