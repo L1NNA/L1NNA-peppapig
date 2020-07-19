@@ -21,15 +21,7 @@ ALLOW_KUBECTL="${input:-$ALLOW_KUBECTL}"
 
 CLUSTER_NAME=peppa-pig
 
-echo helm install --version v0.10.0 --name botkube --namespace botkube \
-  --set communications.slack.enabled=true \
-  --set communications.slack.channel=$SLACK_CHANNEL_NAME \
-  --set communications.slack.token=$SLACK_API_TOKEN_FOR_THE_BOT \
-  --set config.settings.clustername=$CLUSTER_NAME \
-  --set config.settings.allowkubectl=$ALLOW_KUBECTL \
-  --set image.repository=infracloudio/botkube \
-  --set image.tag=v0.10.0 \
-  infracloudio/botkube
+helm install --version v0.10.0 --name botkube --namespace botkube --set communications.slack.enabled=true --set communications.slack.channel=$SLACK_CHANNEL_NAME --set communications.slack.token=$SLACK_API_TOKEN_FOR_THE_BOT --set config.settings.clustername=$CLUSTER_NAME --set config.settings.allowkubectl=$ALLOW_KUBECTL --set image.repository=infracloudio/botkube --set image.tag=v0.10.0 infracloudio/botkube
   
 kubectl get pods -n infracloudio
   
