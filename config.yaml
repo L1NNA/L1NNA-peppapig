@@ -17,6 +17,7 @@ singleuser:
   extraEnv:
     GRANT_SUDO: "yes"
     NOTEBOOK_ARGS: "--allow-root"
+    SLACK_WEBHOOK_URL: "peppa-webhook"
   uid: 0
   cmd: start-singleuser.sh
   storage:
