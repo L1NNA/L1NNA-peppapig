@@ -10,9 +10,7 @@ hub:
     myConfig.py: |
       c.ServerProxy.servers = {"command":["code-server","--port","{port}","--auth","none","--disable-telemetry"," --extensions-dir","/home/jovyan/.vscode_extensions/","--user-data-dir","/home/jovyan/.vscode_data/"],"absolute_url":"False","launcher_entry":{"title":"VS Code"}}
 singleuser:
-  image:
-    name: jupyter/datascience-notebook
-    tag: ea01ec4d9f57
+  image: l1nna/peppapig:tf2.1-v0.0.2
   defaultUrl: "/lab"
   extraEnv:
     GRANT_SUDO: "yes"
@@ -27,7 +25,6 @@ singleuser:
     - display_name: "Single GPU Server"
       description: "Spawns a server with access to one GPU (1-core/1Gi/50Gihdd)"
       kubespawner_override:
-        image: l1nna/peppapig:tf-2.1
         cpu_limit: 1
         mem_limit: 1G
         extra_resource_limits:
@@ -35,7 +32,6 @@ singleuser:
     - display_name: "Dual GPU Server"
       description: "Spawns a server with access to two GPUs (2-core/4Gi/50Gihdd)"
       kubespawner_override:
-        image: l1nna/peppapig:tf-2.1
         cpu_limit: 2
         mem_limit: 4G
         extra_resource_limits:
@@ -43,7 +39,6 @@ singleuser:
     - display_name: "CPU Server"
       description: "Spawns a server with access to more CPU only (2-core/6Gi/50Gihdd)"
       kubespawner_override:
-        image: l1nna/peppapig:tf-2.1
         cpu_limit: 2
         mem_limit: 6G
         extra_resource_limits:
