@@ -455,6 +455,7 @@ RUN jupyter serverextension enable --py jupyter_server_proxy
 RUN jupyter labextension install @jupyterlab/server-proxy
 RUN pip install jupyter-vscode-proxy
 RUN curl -fsSL https://code-server.dev/install.sh | sh
+RUN pip install git+https://github.com/steven-hh-ding/jupyter-slack-notify
 
 RUN fix-permissions /home/$NB_USER
 
