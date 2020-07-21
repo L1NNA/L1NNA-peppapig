@@ -458,15 +458,18 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh
 RUN pip install git+https://github.com/steven-hh-ding/jupyter-slack-notify
 
 ## cuda nn:
-RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
-RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
-RUN dpkg -i cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
+# RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
+# RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+# RUN dpkg -i cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
 RUN apt-get update
 RUN wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 RUN apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 RUN apt-get update
+RUN apt-get install --no-install-recommends \
+    libcudnn7=7.6.4.38-1+cuda10.1  \
+    libcudnn7-dev=7.6.4.38-1+cuda10.1
 
-
+# RTX
 RUN apt-get install -y --no-install-recommends \
     libnvinfer6=6.0.1-1+cuda10.1 \
     libnvinfer-dev=6.0.1-1+cuda10.1 \
