@@ -475,6 +475,10 @@ RUN apt-get install -y --no-install-recommends \
     libnvinfer-dev=6.0.1-1+cuda10.1 \
     libnvinfer-plugin6=6.0.1-1+cuda10.1
 
+
+## ssh
+RUN apt-get install -y openssh-client
+
 RUN fix-permissions /home/$NB_USER
 
 # Switch back to jovyan to avoid accidental container runs as root
