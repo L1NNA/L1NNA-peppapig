@@ -81,7 +81,7 @@ for pod in `kubectl get pods -n kube-system -o=custom-columns=NAME:.metadata.nam
 	gpu=$(kubectl exec -it -n kube-system $pod -- nvidia-smi -q | \
 		grep 'Product Name' | head -n 1)
 
-	label=$(echo $GPU | cut -d ':' -f 2 | xargs | tr '\r' '')
+	label=$(echo $gpu | cut -d ':' -f 2 | xargs | tr '\r' '' | xargs )
 	label=$(echo ${label// /-})
 
 	node=$(kubectl get pod -n kube-system $pod \
