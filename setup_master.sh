@@ -19,7 +19,10 @@ sudo swapoff -a
 sudo sed -i '/ swap / s/^/#/' /etc/fstab
 
 sudo apt-get install -y --allow-unauthenticated docker.io
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+# distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+# for 20.04 LTS 
+# see https://github.com/NVIDIA/nvidia-docker/issues/1204
+distribution=ubuntu19.10
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
 curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 
