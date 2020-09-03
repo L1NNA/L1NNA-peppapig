@@ -60,3 +60,9 @@ https://help.ubuntu.com/community/InstallingANewHardDrive
 sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
 ```
 
+### Paritioning:
+
+wipe disk:
+```
+wipefs -a /dev/sda
+```
