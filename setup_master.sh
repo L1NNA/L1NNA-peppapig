@@ -65,8 +65,11 @@ helm version
 # the client/serve version may be unsynced. 'upgrade' to remove such possibility
 
 # set docker default runtime to nvidia-runtime (on gpu node)
-sudo apt-get install -y jq
-jq '."default-runtime"="nvidia"' /etc/docker/daemon.json | sudo tee /etc/docker/daemon.json
+# sudo apt-get install -y jq
+# jq '."default-runtime"="nvidia"' /etc/docker/daemon.json | sudo tee /etc/docker/daemon.json
+
+# for ubuntu 20.04
+sudo curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/deamon.json > /etc/docker/daemon.json 
 sudo systemctl restart docker
 export KUBECONFIG=$HOME/admin.conf
 
