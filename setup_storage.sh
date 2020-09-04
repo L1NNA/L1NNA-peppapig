@@ -22,6 +22,7 @@ for D in /media/*; do
         template=${template//"_capacity"/$size}
         template=${template//"_path"/$par}
         template=${template//"_class"/$cls}
+        template=${template//"_host"/$(hostname)}
         printf "$template"
         printf "$template"| kubectl create -f -
         # kubectl create -f local-hdd-pv.yaml
