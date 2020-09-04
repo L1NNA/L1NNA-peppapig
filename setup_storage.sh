@@ -17,8 +17,12 @@ for D in /media/*; do
         size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
         cls=${par:7:2}
         echo $par "=>" $name $size "bytes" "of class" $cls   
-        patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "storageClassName":"local-hdd-'$cls'", "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
-        kubectl patch -f https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-pv.yaml -p $patch1 --dry-run=client -o yaml | echo
+        template = curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-pv.yaml 
+        template=${template//"_name"/$name}
+        template=${template//"_capacity"/$size}
+        template=${template//"_path"/$par}
+        template=${template//"_class"/$cls}
+        echo template
         # kubectl create -f -
         # kubectl create -f local-hdd-pv.yaml
         echo $patch1
