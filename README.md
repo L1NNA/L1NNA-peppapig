@@ -66,4 +66,5 @@ wipe disk:
 ```
 sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEl
 sudo wipefs -a /dev/sda
+python3 par.py /dev/sdb 4 md
 ```
