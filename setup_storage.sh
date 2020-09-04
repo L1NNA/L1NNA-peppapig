@@ -23,7 +23,7 @@ for D in /media/*; do
         template=${template//"_path"/$par}
         template=${template//"_class"/$cls}
         echo $template
-        echo $template kubectl create -f -
+        echo $template | kubectl create -f -
         # kubectl create -f local-hdd-pv.yaml
         echo $patch1
         # break
