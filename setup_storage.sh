@@ -31,7 +31,7 @@ for D in /media/md/*; do
         name='v-md'${par//"/"/"-"}
         size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
         echo $par "=>" $name $size "bytes"   
-        patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "storageClassName":"local-hdd-md", "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
+        patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
         kubectl patch -f https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-pv.yaml -p $patch1 --dry-run=client -o yaml | kubectl create -f -
         # kubectl create -f local-hdd-pv.yaml
         echo $patch1
