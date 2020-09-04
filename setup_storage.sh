@@ -10,44 +10,14 @@ kubectl create -f https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/
 kubectl create -f https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-sm.yaml
 
 echo 'setting up PV according to the volums at /media/'
-for D in /media/sm/*; do
+for D in /media/*; do
     if [ -d "${D}" ]; then
         par="${D}"
         name='v'${par//"/"/"-"}
         size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
-        echo $par "=>" $name $size "bytes"   
-        patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "storageClassName":"local-hdd-sm", "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
-        kubectl patch -f https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-pv.yaml -p $patch1 --dry-run=client -o yaml | kubectl create -f -
-        # kubectl create -f local-hdd-pv.yaml
-        echo $patch1
-        # break
-    fi
-done
-
-echo 'setting up PV according to the volums at /media/'
-for D in /media/md/*; do
-    if [ -d "${D}" ]; then
-        par="${D}"
-        name='v'${par//"/"/"-"}
-        size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
-        echo $par "=>" $name $size "bytes"   
-        patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
-        kubectl patch -f https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-pv.yaml -p $patch1 --dry-run=client -o yaml | kubectl create -f -
-        # kubectl create -f local-hdd-pv.yaml
-        echo $patch1
-        # break
-    fi
-done
-
-
-echo 'setting up PV according to the volums at /media/'
-for D in /media/lg/*; do
-    if [ -d "${D}" ]; then
-        par="${D}"
-        name='v'${par//"/"/"-"}
-        size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
-        echo $par "=>" $name $size "bytes"   
-        patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "storageClassName":"local-hdd-lg", "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
+        cls=${par:7:2}
+        echo $par "=>" $name $size "bytes" "of class" $cls   
+        patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "storageClassName":"local-hdd-'$par'", "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
         kubectl patch -f https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-pv.yaml -p $patch1 --dry-run=client -o yaml | kubectl create -f -
         # kubectl create -f local-hdd-pv.yaml
         echo $patch1
