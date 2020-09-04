@@ -13,7 +13,7 @@ echo 'setting up PV according to the volums at /media/'
 for D in /media/sm/*; do
     if [ -d "${D}" ]; then
         par="${D}"
-        name='v'${par//"/"/"-"}
+        name='v-sm'${par//"/"/"-"}
         size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
         echo $par "=>" $name $size "bytes"   
         patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "storageClassName":"local-hdd-sm", "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
@@ -28,7 +28,7 @@ echo 'setting up PV according to the volums at /media/'
 for D in /media/md/*; do
     if [ -d "${D}" ]; then
         par="${D}"
-        name='v'${par//"/"/"-"}
+        name='v-md'${par//"/"/"-"}
         size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
         echo $par "=>" $name $size "bytes"   
         patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "storageClassName":"local-hdd-md", "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
@@ -44,7 +44,7 @@ echo 'setting up PV according to the volums at /media/'
 for D in /media/lg/*; do
     if [ -d "${D}" ]; then
         par="${D}"
-        name='v'${par//"/"/"-"}
+        name='v-lg'${par//"/"/"-"}
         size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
         echo $par "=>" $name $size "bytes"   
         patch1='{"metadata":{"name":"'$name'"},"spec":{"capacity":{"storage":"'$size'i"}, "storageClassName":"local-hdd-lg", "local":{"path":"'$par'"},"nodeAffinity":{"required":{"nodeSelectorTerms":[{"matchExpressions":[{"key":"kubernetes.io/hostname","operator":"In","values":["'$(hostname)'"]}]}]}}}}}'
