@@ -17,7 +17,7 @@ for D in /media/*; do
         size=$(sudo df -BG --output=avail $par| grep -v Avail | xargs)
         cls=${par:7:2}
         echo $par "=>" $name $size "bytes" "of class" $cls   
-        template = curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-pv.yaml 
+        template =${curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/local-hdd-pv.yaml}
         template=${template//"_name"/$name}
         template=${template//"_capacity"/$size}
         template=${template//"_path"/$par}
