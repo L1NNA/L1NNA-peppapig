@@ -10,7 +10,9 @@ hub:
     myConfig.py: |
       c.ServerProxy.servers = {"command":["code-server","--port","{port}","--auth","none","--disable-telemetry"," --extensions-dir","/home/jovyan/.vscode_extensions/","--user-data-dir","/home/jovyan/.vscode_data/"],"absolute_url":"False","launcher_entry":{"title":"VS Code"}}
 singleuser:
-  image: l1nna/peppapig:tf2.1-v0.0.2
+  image: 
+    name: l1nna/peppapig
+    tag: tf2.1-v0.0.3
   defaultUrl: "/lab"
   extraEnv:
     GRANT_SUDO: "yes"
