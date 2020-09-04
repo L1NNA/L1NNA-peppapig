@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: test
+  name: _name
 spec:
   capacity:
-    storage: 50Gi
+    storage: _capacity
   accessModes:
   - ReadWriteOnce
   volumeMode: Filesystem
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-hdd
+  storageClassName: local-hdd-_class
   local:
-    path: /media/m2
+    path: _path
   nodeAffinity:
     required:
       nodeSelectorTerms:
