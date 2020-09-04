@@ -27,6 +27,7 @@ helm upgrade --install $RELEASE jupyterhub/jupyterhub \
 
 echo 'done'
 echo 'to update with any new changes in config.yaml:'
+# docs for config: https://jupyterhub-kubespawner.readthedocs.io/en/latest/spawner.html
 echo 'helm upgrade $RELEASE jupyterhub/jupyterhub --version=0.9.0  --values config.yaml --recreate-pods'
 
 
