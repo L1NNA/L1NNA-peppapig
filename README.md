@@ -68,3 +68,30 @@ sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEl
 sudo wipefs -a /dev/sda
 python3 par.py /dev/sdb 4 md
 ```
+
+
+### ngnix & https:
+
+ngix server block for reverse proxy:
+```
+server {
+    listen 80;
+    server_name yourapp.com; # or server_name subdomain.yourapp.com;
+
+    location / {
+        proxy_pass http://localhost:8888;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+
+        # Enables WS support
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_redirect off;
+    }
+}
+```
+
+https: https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04
