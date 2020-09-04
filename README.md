@@ -64,5 +64,6 @@ sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
 
 wipe disk:
 ```
-wipefs -a /dev/sda
+sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEl
+sudo wipefs -a /dev/sda
 ```
