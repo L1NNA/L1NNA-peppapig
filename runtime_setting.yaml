@@ -19,6 +19,7 @@ from_data: |
                 <option value="l1nna/peppapig:tf2.1-v0.0.2">l1nna/peppapig:tensorflow-2.3 data science stack</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">Included most of the dependencies you would need.</small>
+              </div>
   <div class="form-group">
               <label for="inputCPU">Number of CPU Cores</label>
               <select name="cpu_limit" class="form-control" id="inputCPU" aria-describedby="emailHelp">
