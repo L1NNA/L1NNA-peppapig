@@ -12,6 +12,14 @@ from_data: |
     <img src="https://thumbs.gfycat.com/ThornyIllegalIndochinesetiger-size_restricted.gif" class="rounded" alt="...">
   </div>
   <div class="form-group">
+              <label for="inputIMG">Number of CPU Cores</label>
+              <select name="image" class="form-control" id="inputIMG" aria-describedby="emailHelp">
+                <option value="l1nna/peppapig:tf2.1-v0.0.2" select="selected">l1nna/peppapig:tensorflow-2.1 data science stack</option>
+                <option value="l1nna/peppapig:tf2.1-v0.0.2">l1nna/peppapig:tensorflow-2.2 data science stack</option>
+                <option value="l1nna/peppapig:tf2.1-v0.0.2">l1nna/peppapig:tensorflow-2.3 data science stack</option>
+              </select>
+              <small id="cpuHelp" class="form-text text-muted">The upper limit of CPU cores.</small>
+  <div class="form-group">
               <label for="inputCPU">Number of CPU Cores</label>
               <select name="cpu_limit" class="form-control" id="inputCPU" aria-describedby="emailHelp">
                 <option value="8" select="selected">8 cores Xeon Gold 2.3/3.9GHz</option>
