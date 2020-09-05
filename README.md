@@ -75,6 +75,7 @@ python3 par.py /dev/sdb 4 md
 
 ngix server block for reverse proxy:
 ```
+# vim /etc/nginx/sites-available/yourapp.com
 server {
     listen 80;
     server_name yourapp.com; # or server_name subdomain.yourapp.com;
@@ -93,6 +94,7 @@ server {
         proxy_redirect off;
     }
 }
+# sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
 ```
 
 https: https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04
