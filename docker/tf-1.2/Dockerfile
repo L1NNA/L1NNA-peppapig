@@ -477,7 +477,11 @@ RUN apt-get install -y --no-install-recommends \
 
 
 ## ssh
-RUN apt-get install -y openssh-client
+RUN apt-get install -y openssh-client vim
+
+## conda persistent
+RUN echo "envs_dirs:" > /home/$NB_USER/.condarc && \
+    echo "  -/home/jovyan/my-conda-envs/" >> /home/$NB_USER/.condarc
 
 RUN fix-permissions /home/$NB_USER
 
