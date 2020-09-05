@@ -7,6 +7,7 @@ storage:
    - reetamtaj
 
 from_data: | 
+  <img src="https://msandbu.org/wp-content/uploads/2019/01/solutions-nvidiea-gpu-banner4.jpg" class="img-fluid" alt="Responsive image">
   <div class="form-group">
               <label for="inputCPU">Number of CPU Cores</label>
               <select name="cpu_limit" class="form-control" id="inputCPU" aria-describedby="emailHelp">
