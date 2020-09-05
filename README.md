@@ -17,6 +17,7 @@ curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_storage
 Setup Jupyter hub (this will take a while as we need to compile a new docker image):
 ```
 curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_jhub.sh | bash
+## debug: kubectl logs $(kubectl get pods -n jhub | grep hub | awk '{print $1;}') -n jhub 
 ```
 
 
