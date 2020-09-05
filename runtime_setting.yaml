@@ -7,7 +7,7 @@ storage:
    - reetamtaj
 
 from_data: | 
-  """     <div class="form-group">
+  <div class="form-group">
               <label for="inputCPU">Number of CPU Cores</label>
               <select name="cpu_limit" class="form-control" id="inputCPU" aria-describedby="emailHelp">
                 <option value="8" select="selected">8 cores Xeon Gold 2.3/3.9GHz</option>
@@ -40,5 +40,4 @@ from_data: |
                 <option value="local-hdd-sm" selected="selected">200G SSD SSDSC2KB019T8R</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">The storage volumn will be created for you only once. If you need to upgrade the storage (change PV), please let us know. </small>
-            </div>
-  """
+  </div>
