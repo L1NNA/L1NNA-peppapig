@@ -7,7 +7,10 @@ storage:
    - reetamtaj
 
 from_data: | 
-  <img src="https://msandbu.org/wp-content/uploads/2019/01/solutions-nvidiea-gpu-banner4.jpg" class="img-fluid" alt="Responsive image">
+  <div class="text-center">
+    <h3>[ 🔥 burn baby burn 🔥 ]</h3>
+    <img src="https://thumbs.gfycat.com/ThornyIllegalIndochinesetiger-size_restricted.gif" class="rounded" alt="...">
+  </div>
   <div class="form-group">
               <label for="inputCPU">Number of CPU Cores</label>
               <select name="cpu_limit" class="form-control" id="inputCPU" aria-describedby="emailHelp">
