@@ -65,7 +65,15 @@ server {
 
 https: https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04
 
-
+```
+# for default redict:
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        server_name _;
+        return 301 https://p.l1nna.com;
+}
+```
 
 
 
