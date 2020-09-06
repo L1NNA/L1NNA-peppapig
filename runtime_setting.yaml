@@ -18,7 +18,7 @@ from_data: |
                 <option value="l1nna/peppapig:tf2.1-v0.0.4">l1nna/peppapig:tensorflow-2.2 data science stack</option>
                 <option value="l1nna/peppapig:tf2.1-v0.0.4">l1nna/peppapig:tensorflow-2.3 data science stack</option>
               </select>
-              <small id="cpuHelp" class="form-text text-muted">Included most of the dependencies you would need.</small>
+              <small id="cpuHelp" class="form-text text-muted">Included most of the dependencies you would need. For a custom base image, please pin us on slack.</small>
               </div>
   <div class="form-group">
               <label for="inputCPU">Number of CPU Cores</label>
@@ -53,4 +53,9 @@ from_data: |
                 <option value="local-hdd-{}" selected="selected">{}</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">The storage volumn will be created for you only once. If you need to upgrade the storage (change PV), please let us know. </small>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check_agreement">
+          <label class="form-check-label" for="exampleCheck1">Noted that your server will be culled after 12 hours of inactivities, and all the files will be automatically saved. Only your home folder is persisted (your conda environments and vscode extensions are installed under your home folder and persisted by default). </label>
+  </div>
+  
   </div>
