@@ -83,22 +83,6 @@
    }
   </style>
   
-  <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script>
-    require.config({
-        {% if version_hash %}
-    urlArgs: "v={{version_hash}}",
-      {% endif %}
-    baseUrl: '{{static_url("js", include_version=False)}}',
-      paths: {
-      components: '../components',
-            moment: "../components/moment/moment",
-        },
-    shim: {
-    }
-    });
-  </script>
-
   <script type="text/javascript">
     window.jhdata = {
       base_url: "{{base_url}}",
