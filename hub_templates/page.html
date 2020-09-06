@@ -1,31 +1,11 @@
-<!--
-=========================================================
-* BLK Design System- v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/blk-design-system
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
- -->
-
-
-
 {% macro modal(title, btn_label=None, btn_class="btn-primary") %}
 {% set key = title.replace(' ', '-').lower() %}
 {% set btn_label = btn_label or title %}
-<div class="modal fade" id="{{key}}-dialog" tabindex="-1" role="dialog" aria-labelledby="{{key}}-label"
-  aria-hidden="true">
+<div class="modal fade" id="{{key}}-dialog" tabindex="-1" role="dialog" aria-labelledby="{{key}}-label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-            class="sr-only">Close</span></button>
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="{{key}}-label">{{title}}</h4>
       </div>
       <div class="modal-body">
@@ -41,240 +21,169 @@
 {% endmacro %}
 
 
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="https://l1nna.com/black-assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="https://l1nna.com/black-assets/img/favicon.png">
+    <meta charset="utf-8">
 
-  <title>{% block title %}L1NNA HPC{% endblock %}</title>
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}JupyterHub{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
-  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  <!-- Nucleo Icons -->
-  <link href="https://l1nna.com/black-assets/css/nucleo-icons.css" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link href="https://l1nna.com/black-assets/css/blk-design-system.css?v=1.0.0" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="https://l1nna.com/black-assets/demo/demo.css" rel="stylesheet" />
-  
-  <style>
-   .container{
-       justify-content: center !important;
-       display: flex !important;
-   }
-   .container h1, .container h2, .container h3, .container h4 {
-       margin-bottom: 0;
-   }
-   .table .btn {
-       margin: 5px;
-   }
-   .btn-xs {
-      font-size: 0.875rem;
-      border-radius: 0.2857rem;
-      padding: 5px 15px;
-   }
-  </style>
-  
-  <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{static_url("components/jquery/dist/jquery.min.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{static_url("components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script>
-    require.config({
-        {% if version_hash %}
-    urlArgs: "v={{version_hash}}",
-      {% endif %}
-    baseUrl: '{{static_url("js", include_version=False)}}',
-      paths: {
-      components: '../components',
-        jquery: '../components/jquery/dist/jquery.min',
-          bootstrap: '../components/bootstrap/dist/js/bootstrap.min',
+    {% block stylesheet %}
+    <link rel="stylesheet" href="{{ static_url("css/style.min.css") }}" type="text/css"/>
+    {% endblock %}
+    {% block favicon %}
+    <link rel="icon" href="{{ static_url("favicon.ico") }}" type="image/x-icon">
+    {% endblock %}
+    {% block scripts %}
+    <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{static_url("components/jquery/dist/jquery.min.js") }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{static_url("components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript" charset="utf-8"></script>
+    {% endblock %}
+    <script>
+      require.config({
+          {% if version_hash %}
+          urlArgs: "v={{version_hash}}",
+          {% endif %}
+          baseUrl: '{{static_url("js", include_version=False)}}',
+          paths: {
+            components: '../components',
+            jquery: '../components/jquery/dist/jquery.min',
+            bootstrap: '../components/bootstrap/dist/js/bootstrap.min',
             moment: "../components/moment/moment",
-        },
-    shim: {
-      bootstrap: {
-        deps: ["jquery"],
-          exports: "bootstrap"
-      },
-    }
-    });
-  </script>
+          },
+          shim: {
+            bootstrap: {
+              deps: ["jquery"],
+              exports: "bootstrap"
+            },
+          }
+      });
+    </script>
 
-  <script type="text/javascript">
-    window.jhdata = {
-      base_url: "{{base_url}}",
-      prefix: "{{prefix}}",
-      {% if user %}
-    user: "{{user.json_escaped_name}}",
-      {% endif %}
-    {% if admin_access %}
-    admin_access: true,
-      {% else %}
-    admin_access: false,
-      {% endif %}
-    {% if not no_spawner_check and user and user.spawner.options_form %}
-    options_form: true,
-      {% else %}
-    options_form: false,
-      {% endif %}
-    }
-  </script>
+    <script type="text/javascript">
+      window.jhdata = {
+        base_url: "{{base_url}}",
+        prefix: "{{prefix}}",
+        {% if user %}
+        user: "{{user.json_escaped_name}}",
+        {% endif %}
+        {% if admin_access %}
+        admin_access: true,
+        {% else %}
+        admin_access: false,
+        {% endif %}
+        {% if not no_spawner_check and user and user.spawner.options_form %}
+        options_form: true,
+        {% else %}
+        options_form: false,
+        {% endif %}
+      }
+    </script>
 
-  {% block meta %}
-  {% endblock %}
+    {% block meta %}
+    {% endblock %}
+
 </head>
 
-<body class="index-page">
+<body>
 
-  <noscript>
-    <div id='noscript'>
-      We require JavaScript.<br>
-      Please enable it to proceed.
-    </div>
-  </noscript>
+<noscript>
+  <div id='noscript'>
+    JupyterHub requires JavaScript.<br>
+    Please enable it to proceed.
+  </div>
+</noscript>
 
-  {% block nav_bar %}
-  <nav class="navbar navbar-expand-lg fixed-top ">
-    <div class="container">
-      <div class="navbar-translate">
-        <a class="navbar-brand" href="{{logo_url or base_url}}" rel="tooltip"
-          title="Designed and Coded by Creative Tim" data-placement="bottom">
-          <span>L1NNA•</span>
-          {% if user %}
-          {{user.name}}
-          {% endif %}
-        </a>
-        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-          aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-bar bar1"></span>
-          <span class="navbar-toggler-bar bar2"></span>
-          <span class="navbar-toggler-bar bar3"></span>
+{% block nav_bar %}
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        {% block logo %}
+        <span id="jupyterhub-logo" class="pull-left">
+            <a href="{{logo_url or base_url}}"><img src='{{base_url}}logo' alt='JupyterHub' class='jpy-logo' title='Home'/></a>
+        </span>
+        {% endblock %}
+        {% if user %}
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
+        {% endif %}
       </div>
 
-      <div class="collapse navbar-collapse justify-content-end" id="navigation">
-        <div class="navbar-collapse-header">
-          <div class="row">
-            <div class="col-6 collapse-brand">
-              <a>
-                L1NNA
-              </a>
-            </div>
-            <div class="col-6 collapse-close text-right">
-              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navigation"
-                aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="tim-icons icon-simple-remove"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+      <div class="collapse navbar-collapse" id="thenavbar">
         {% if user %}
         <ul class="nav navbar-nav">
           {% block nav_bar_left_items %}
-          <li class="nav-item"><a class="nav-link" href="{{base_url}}home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{base_url}}token">Token</a></li>
-          {% if user.admin %}
-          <li class="nav-item"><a class="nav-link" href="{{base_url}}admin">Admin</a></li>
-          {% endif %}
-          {% if services %}
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">Services<span class="caret"></span></a>
-            <div class="dropdown-menu dropdown-with-icons">
+            <li><a href="{{base_url}}home">Home</a></li>
+            <li><a href="{{base_url}}token">Token</a></li>
+            {% if user.admin %}
+            <li><a href="{{base_url}}admin">Admin</a></li>
+            {% endif %}
+            {% if services %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services<span class="caret"></span></a>
+              <ul class="dropdown-menu">
               {% for service in services %}
-              <a class="dropdown-item" href="{{service.prefix}}"><i
-                  class="tim-icons icon-bullet-list-67"></i>{{service.name}}</a>
+                <li><a class="dropdown-item" href="{{service.prefix}}">{{service.name}}</a></li>
               {% endfor %}
-            </div>
-          </li>
-          {% endif %}
-          {% if user %}
-          <li class="nav-item">
-            <a class="nav-link btn btn-default d-none d-lg-block" href="{{logout_url}}">
-              <i class="tim-icons icon-button-power"></i> Logout
-            </a>
-          </li>
-          {% endif %}
+              </ul>
+            </li>
+            {% endif %}
           {% endblock %}
         </ul>
         {% endif %}
-        
-
+        <ul class="nav navbar-nav navbar-right">
+          {% block nav_bar_right_items %}
+            <li>
+              {% block login_widget %}
+                <span id="login_widget">
+                  {% if user %}
+		            <p class="navbar-text">{{user.name}}</p>
+                    <a id="logout" role="button" class="navbar-btn btn-sm btn btn-default" href="{{logout_url}}"> <i aria-hidden="true" class="fa fa-sign-out"></i> Logout</a>
+                  {% else %}
+                    <a id="login" role="button" class="btn-sm btn navbar-btn btn-default" href="{{login_url}}">Login</a>
+                  {% endif %}
+                </span>
+              {% endblock %}
+            </li>
+          {% endblock %}
+        </ul>
       </div>
 
       {% block header %}
       {% endblock %}
     </div>
   </nav>
-  {% endblock %}
-
-  <div class="wrapper" style="padding-top:100px">
-    <div class="main">
-      {% block announcement %}
-      {% if announcement %}
-      <div class="container text-center announcement alert alert-warning">
-        {{ announcement | safe }}
-      </div>
-      {% endif %}
-      {% endblock %}
+{% endblock %}
 
 
-      {% block main %}
-      {% endblock %}
-      
+{% block announcement %}
+{% if announcement %}
+<div class="container text-center announcement alert alert-warning">
+  {{ announcement | safe }}
+</div>
+{% endif %}
+{% endblock %}
 
-      {% call modal('Error', btn_label='OK') %}
-      <div class="ajax-error">
-        The error
-      </div>
-      {% endcall %}
 
-      {% block script %}
-      {% endblock %}
+{% block main %}
+{% endblock %}
 
-    </div>
+{% call modal('Error', btn_label='OK') %}
+  <div class="ajax-error">
+    The error
   </div>
-  <!--   Core JS Files   -->
-  <script src="https://l1nna.com/black-assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="https://l1nna.com/black-assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="https://l1nna.com/black-assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <script src="https://l1nna.com/black-assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="https://l1nna.com/black-assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="https://l1nna.com/black-assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!-- Chart JS -->
-  <script src="https://l1nna.com/black-assets/js/plugins/chartjs.min.js"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="https://l1nna.com/black-assets/js/plugins/moment.min.js"></script>
-  <script src="https://l1nna.com/black-assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-  <!-- Black Dashboard DEMO methods, don't include it in your project! -->
-  <script src="https://l1nna.com/black-assets/demo/demo.js"></script>
-  <!-- Control Center for Black UI Kit: parallax effects, scripts for the example pages etc -->
-  <script src="https://l1nna.com/black-assets/js/blk-design-system.min.js?v=1.0.0" type="text/javascript"></script>
-  <script>
-    $(document).ready(function () {
-      blackKit.initDatePicker();
-      blackKit.initSliders();
-    });
+{% endcall %}
 
-    function scrollToDownload() {
+{% block script %}
+{% endblock %}
 
-      if ($('.section-download').length != 0) {
-        $("html, body").animate({
-          scrollTop: $('.section-download').offset().top
-        }, 1000);
-      }
-    }
-  </script>
 </body>
 
 </html>
