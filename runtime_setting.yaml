@@ -14,8 +14,7 @@ from_data: |
   <div class="form-group">
               <label for="inputIMG">Base docker image to be deployed</label>
               <select name="image" class="form-control" id="inputIMG" aria-describedby="emailHelp">
-                <option value="l1nna/peppapig:tf2.3-v0.0.1" >l1nna/peppapig:tensorflow-2.3 data science stack</option>
-                <option value="l1nna/peppapig:tf2.1-v0.0.3" select="selected">l1nna/peppapig:tensorflow-2.3 data science stack</option>
+                <option value="l1nna/peppapig:tf2.3-v0.0.3" select="selected">l1nna/peppapig Tensorflow-2.3 data science stack</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">Included most of the dependencies you would need. For a custom base image, please pin us on slack.</small>
               </div>
