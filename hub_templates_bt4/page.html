@@ -66,6 +66,26 @@
   <link href="https://l1nna.com/black-assets/demo/demo.css" rel="stylesheet" />
  
  <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
+ <script>
+      require.config({
+          {% if version_hash %}
+          urlArgs: "v={{version_hash}}",
+          {% endif %}
+          baseUrl: '{{static_url("js", include_version=False)}}',
+          paths: {
+            components: '../components',
+            jquery: 'https://l1nna.com/black-assets/js/core/jquery.min.js',
+            bootstrap: 'https://l1nna.com/black-assets/js/core/bootstrap.min.js',
+            moment: "../components/moment/moment",
+          },
+          shim: {
+            bootstrap: {
+              deps: ["jquery"],
+              exports: "bootstrap"
+            },
+          }
+      });
+    </script>
   
   <style>
    .container{
