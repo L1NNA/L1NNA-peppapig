@@ -7,10 +7,6 @@ storage:
    - reetamtaj
 
 from_data: | 
-  <div class="text-center">
-    <h3>[ 🔥 burn baby burn 🔥 ]</h3>
-    <img src="https://thumbs.gfycat.com/ThornyIllegalIndochinesetiger-size_restricted.gif" class="rounded" alt="...">
-  </div>
   <div class="form-group">
               <label for="inputIMG">Base docker image to be deployed</label>
               <select name="image" class="form-control" id="inputIMG" aria-describedby="emailHelp">
