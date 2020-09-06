@@ -51,7 +51,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="https://l1nna.com/black-assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="https://l1nna.com/black-assets/img/favicon.png">
 
-  <title>{% block title %}JupyterHub{% endblock %}</title>
+  <title>{% block title %}L1NNA HPC{% endblock %}</title>
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -123,9 +123,9 @@
   <nav class="navbar navbar-expand-lg fixed-top ">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="https://demos.creative-tim.com/blk-design-system/index.html" rel="tooltip"
+        <a class="navbar-brand" href="{{logo_url or base_url}}" rel="tooltip"
           title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
-          <span>BLK•</span>
+          <span>L1NNA•</span>
           {% if user %}
           {{user.name}}
           {% endif %}
@@ -194,7 +194,7 @@
   </nav>
   {% endblock %}
 
-  <div class="wrapper">
+  <div class="wrapper" style="padding-top:100px">
     <div class="main">
       {% block announcement %}
       {% if announcement %}
