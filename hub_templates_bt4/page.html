@@ -92,15 +92,15 @@
     baseUrl: '{{static_url("js", include_version=False)}}',
       paths: {
       components: '../components',
-        jquery: '../components/jquery/dist/jquery.min',
-          bootstrap: '../components/bootstrap/dist/js/bootstrap.min',
+        #jquery: '../components/jquery/dist/jquery.min',
+        #bootstrap: '../components/bootstrap/dist/js/bootstrap.min',
             moment: "../components/moment/moment",
         },
     shim: {
-      bootstrap: {
-        deps: ["jquery"],
-          exports: "bootstrap"
-      },
+      #bootstrap: {
+        #deps: ["jquery"],
+          #exports: "bootstrap"
+      #},
     }
     });
   </script>
