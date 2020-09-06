@@ -11,8 +11,7 @@ partition_cmd = 'sudo parted -s --align optimal {} -- mklabel gpt'.format(
 fs_cmd = []
 mn_cmd = []
 tb_cmd = []
-folder = os.path.join('/media', storage)
-names = [int(i) for i in os.listdir(folder)]
+names = [int(i.replace(storage,'')) for i in os.listdir('/media') if i.startswith(storage)]
 names.append(0)
 start = max(names)
 
@@ -41,3 +40,4 @@ for c in mn_cmd:
 print('# ftab updates')
 for f in tb_cmd:
     print(f)
+
