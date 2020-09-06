@@ -65,15 +65,6 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="https://l1nna.com/black-assets/demo/demo.css" rel="stylesheet" />
 
-  {% block stylesheet %}
-  <link rel="stylesheet" href="{{ static_url("css/style.min.css") }}" type="text/css" />
-  {% endblock %}
-  {% block scripts %}
-  <script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{static_url("components/jquery/dist/jquery.min.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{static_url("components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript"
-    charset="utf-8"></script>
-  {% endblock %}
   <script>
     require.config({
         {% if version_hash %}
