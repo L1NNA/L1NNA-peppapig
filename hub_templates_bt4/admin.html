@@ -32,12 +32,10 @@
     <tbody>
       <tr class="user-row add-user-row">
         <td colspan="12">
-          <a id="add-users" role="button" class="col-xs-2 btn btn-default">Add Users</a>
-          <span class="col-xs-offset-4 col-xs-3">
-            <a id="start-all-servers" role="button" class="btn btn-primary col-xs-5 col-xs-offset-1">Start All</a>
-            <a id="stop-all-servers" role="button" class="btn btn-danger col-xs-5 col-xs-offset-1">Stop All</a>
-          </span>
-          <a id="shutdown-hub" role="button" class="col-xs-2 col-xs-offset-1 btn btn-danger">Shutdown Hub</a>
+          <a id="add-users" role="button" class="btn btn-md">Add Users</a>
+            <a id="start-all-servers" role="button" class="btn btn-primary btn-md pull-right>Start All</a>
+            <a id="stop-all-servers" role="button" class="btn btn-danger btn-md pull-right">Stop All</a>
+          <a id="shutdown-hub" role="button" class="btn btn-danger btn-md pull-right">Shutdown Hub</a>
         </td>
       </tr>
       {% for user in users %}
