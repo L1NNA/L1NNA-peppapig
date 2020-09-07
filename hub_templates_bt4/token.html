@@ -2,8 +2,14 @@
 
 {% block main %}
 
+<style>
+.row{
+  width: 100%
+  }
+</style>
+
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <form id="request-token-form" class="col-md-6">
       <div class="text-center">
         <button type="submit" class="btn btn-lg btn-jupyter">
@@ -23,7 +29,7 @@
     </form>
   </div>
 
-  <div class="row">
+  <div class="row d-flex justify-content-center">
       <div id="token-area" class="col-md-6" style="display: none;">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -43,7 +49,7 @@
   </div>
 
   {% if api_tokens %}
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <h2>API Tokens</h2>
     <p>
       These are tokens with full access to the JupyterHub API.
