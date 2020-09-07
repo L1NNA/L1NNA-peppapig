@@ -7,6 +7,12 @@ storage:
    - reetamtaj
 
 from_data: | 
+  <style>
+  option {
+      background: rgb(23 25 65);
+      color: #fff;
+  }
+  </style>
   <div class="form-group">
               <label for="inputIMG">Base docker image to be deployed</label>
               <select name="image" class="form-control" id="inputIMG" aria-describedby="emailHelp">
