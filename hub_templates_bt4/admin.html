@@ -33,9 +33,11 @@
       <tr class="user-row add-user-row">
         <td colspan="12">
           <a id="add-users" role="button" class="btn btn-md">Add Users</a>
-            <a id="start-all-servers" role="button" class="btn btn-primary btn-md pull-right>Start All</a>
-            <a id="stop-all-servers" role="button" class="btn btn-danger btn-md pull-right">Stop All</a>
-          <a id="shutdown-hub" role="button" class="btn btn-danger btn-md pull-right">Shutdown Hub</a>
+          <div class="pull-right">
+           <a id="start-all-servers" role="button" class="btn btn-primary btn-md">Start All</a>
+           <a id="stop-all-servers" role="button" class="btn btn-danger btn-md ">Stop All</a>
+           <a id="shutdown-hub" role="button" class="btn btn-danger btn-md">Shutdown Hub</a>
+          </div>
         </td>
       </tr>
       {% for user in users %}
