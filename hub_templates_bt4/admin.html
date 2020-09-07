@@ -49,6 +49,8 @@
         {%- if spawner.name -%}
         /{{ spawner.name }}
         {%- endif -%}
+        /{{spawner.cpu_limit}}
+        /{{spawner.mem_limit}}
       </td>
 
       <td class="admin-col col-sm-2">
