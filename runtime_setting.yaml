@@ -30,6 +30,7 @@ from_data: |
                 <option value="1" selected="selected">1 RTX6000 (24G)</option>
                 <option value="2">2 RTX6000 (24G)</option>
                 <option value="4">4 RTX6000 (24G)</option>
+                <option value="0">I don't need a GPU for now.</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">The number of physical GPU devices to be allocated.</small>
             </div>
