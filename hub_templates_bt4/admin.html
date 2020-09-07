@@ -52,7 +52,7 @@
         {%- if spawner.cpu_limit -%}
         /{{ spawner.cpu_limit }}
         {%- endif -%}
-        /{{ str(spawner.__dict__) }}
+        /{{ spawner.__dict__ | str }}
       </td>
 
       <td class="admin-col col-sm-2">
