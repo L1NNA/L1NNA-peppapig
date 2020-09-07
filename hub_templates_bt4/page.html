@@ -439,8 +439,7 @@
       <div class="navbar-translate">
         <a class="navbar-brand" href="{{logo_url or base_url}}" rel="tooltip"
           title="Designed and Coded by Creative Tim" data-placement="bottom">
-          <img src="https://github.com/{{user.name}}.png" class="img-fluid rounded-circle shadow" style="height:35px">
-          <span><img src="https://l1nna.com/images/favicon.ico" style="height: 40px;vertical-align: bottom;"> L1NNA•</span>
+          <span><img src="https://l1nna.com/images/favicon.ico" style="height: 40px;vertical-align: middle;"> L1NNA•</span>
           {% if user %}
           {{user.name}}
           {% endif %}
@@ -490,6 +489,7 @@
           </li>
           {% endif %}
           {% if user %}
+          <img src="https://github.com/{{user.name}}.png" class="img-fluid rounded-circle shadow" style="height:35px">
           <li class="nav-item">
             <a class="nav-link btn btn-default d-none d-lg-block" href="{{logout_url}}">
               <i class="tim-icons icon-button-power"></i> Logout
