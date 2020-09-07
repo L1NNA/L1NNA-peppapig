@@ -49,8 +49,10 @@
         {%- if spawner.name -%}
         /{{ spawner.name }}
         {%- endif -%}
-        /{{spawner.cpu_limit}}
-        /{{spawner.mem_limit}}
+        {%- if spawner.cpu_limit -%}
+        /{{ spawner.cpu_limit }}
+        {%- endif -%}
+        /{{ str(spawner.__dict__) }}
       </td>
 
       <td class="admin-col col-sm-2">
