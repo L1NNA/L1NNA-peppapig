@@ -489,9 +489,9 @@
           </li>
           {% endif %}
           {% if user %}
-          <img src="https://github.com/{{user.name}}.png" class="img-fluid rounded-circle shadow" style="height:35px">
           <li class="nav-item">
-            <a class="nav-link btn btn-default d-none d-lg-block" href="{{logout_url}}">
+            <img src="https://github.com/{{user.name}}.png" class="img-fluid rounded-circle shadow" style="height:35px; margin-right:30px">
+            <a class="nav-link btn btn-default" href="{{logout_url}}" style="padding-left:20px;padding-right:20px">
               <i class="tim-icons icon-button-power"></i> Logout
             </a>
           </li>
