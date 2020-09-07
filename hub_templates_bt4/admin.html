@@ -50,10 +50,10 @@
         /{{ spawner.name }}
         {%- endif -%}
         {%- if spawner.user_options -%}
-        [{{ spawner.user_options.cpu_limit }}
-        /{{ spawner.user_options.mem_limit }}
-        /{{ spawner.user_options.gpu_limit }}
-        /{{ spawner.user_options.storage_class }}]
+        [{{ spawner.user_options.cpu_limit[0] }}
+        /{{ spawner.user_options.mem_limit[0] }}
+        /{{ spawner.user_options.gpu_limit[0] }}
+        /{{ spawner.user_options.storage_class[0] }}]
         {%- endif -%}
       </td>
 
