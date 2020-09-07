@@ -49,10 +49,12 @@
         {%- if spawner.name -%}
         /{{ spawner.name }}
         {%- endif -%}
-        {%- if spawner.cpu_limit -%}
-        /{{ spawner.cpu_limit }}
+        {%- if spawner.user_options -%}
+        [{{ spawner.user_options.cpu_limit }}
+        /{{ spawner.user_options.mem_limit }}
+        /{{ spawner.user_options.gpu_limit }}
+        /{{ spawner.user_options.storage_class }}]
         {%- endif -%}
-        /{{ '{}'.format(spawner.__dict__) }}
       </td>
 
       <td class="admin-col col-sm-2">
