@@ -21,6 +21,8 @@ from_data: |
                 <option value="8" select="selected">8 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="16">16 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="32">32 cores Xeon Gold 2.3/3.9GHz</option>
+                <option value="48">48 cores Xeon Gold 2.3/3.9GHz</option>
+                <option value="56">56 cores Xeon Gold 2.3/3.9GHz</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">The upper limit of CPU cores.</small>
             </div>
