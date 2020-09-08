@@ -6,7 +6,33 @@ proxy:
       http: 30080
       https: 30443
 hub:
+  #Clone custom JupyterHub templates into a volume
+  initContainers:
+    - name: git-clone-templates
+      image: alpine/git
+      args:
+        - clone
+        - --single-branch
+        - --branch=master
+        - --depth=1
+        - --
+        - https://github.com/L1NNA/L1NNA-peppapig
+        - /etc/jupyterhub/custom
+      securityContext:
+        runAsUser: 0
+      volumeMounts:
+        - name: custom-templates
+          mountPath: /etc/jupyterhub/custom
+  extraVolumes:
+    - name: custom-templates
+      emptyDir: {}
+  extraVolumeMounts:
+    - name: custom-templates
+      mountPath: /etc/jupyterhub/custom
+
   extraConfig:
+    templates: |
+      c.JupyterHub.template_paths = ['/etc/jupyterhub/custom/hub_templates_bt4/']
     debug: |
       # Set the log level by value or name.
       c.JupyterHub.log_level = 'DEBUG'
@@ -45,31 +71,41 @@ hub:
         spawner.log.info('  haha ' + str(auth_state))
         spawner.log.info('  haha ' + str(spawner.user_options))
         options = spawner.user_options
+        spawner.image = options['image'][0]
         spawner.cpu_limit = float(options['cpu_limit'][0])
         spawner.mem_limit = options['mem_limit'][0]
         spawner.storage_class = options['storage_class'][0]
         spawner.extra_resource_limits = {"nvidia.com/gpu": int(options["gpu_limit"][0])}
 
-      c.KubeSpawner.pre_spawn_hook = my_pre_spawn_hook
+      c.KubeSpawner.pre_spawn_hook = my_pre_spawn_hook 
 auth:
   type: github
   admin:
     access: true
     users:
       - "steven-hh-ding"
+      - "haz"
+      - "WiegerTheFarmer"
   github:
     clientId: ""
     clientSecret: ""
     callbackUrl: "https://p.l1nna.com/hub/oauth_callback"
-    orgWhitelist:
+    orgWhitelist: 
+      - "qumulab"
       - "L1NNA"
   scopes:
     - "read:user"
     - "read:org"
 singleuser:
-  image:
+  lifecycleHooks:
+    postStart:
+      exec:
+        command: ["conda", "config"]
+        command: ["echo", "'env_dirs'", ">", "~/.condarc"]
+        command: ["echo", "'  -home/jovyan/user-conda-envs/'", ">>", "~/.condarc"]
+  image: 
     name: l1nna/peppapig
-    tag: tf2.1-v0.0.3
+    tag: tf2.3-v0.0.3
   defaultUrl: "/lab"
   extraEnv:
     GRANT_SUDO: "yes"

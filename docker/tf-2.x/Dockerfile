@@ -399,7 +399,7 @@ RUN conda install --quiet --yes \
 
 # Check compatibility here: https://pytorch.org/get-started/locally/
 RUN conda install --quiet --yes \
-     pytorch \ 
+     pytorch==1.6.0 \ 
      torchvision \
      cudatoolkit=10.1 -c pytorch
 #    pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html && \
@@ -477,11 +477,15 @@ RUN apt-get install -y --no-install-recommends \
 
 
 ## ssh
-RUN apt-get install -y openssh-client vim
+RUN apt-get install -y openssh-client vim 
 
-## conda persistent
-RUN echo "envs_dirs:" > /home/$NB_USER/.condarc && \
-    echo "  -/home/jovyan/my-conda-envs/" >> /home/$NB_USER/.condarc
+RUN conda install --quiet --yes \ 
+     nb_conda_kernels 
+
+# Clean installation
+RUN conda clean --all -f -y && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
 
 RUN fix-permissions /home/$NB_USER
 
