@@ -283,7 +283,7 @@ WORKDIR $HOME
   ############################################################################
   ################ Dependency: jupyter/datascience-notebook ##################
   ############################################################################
-  
+
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
 
@@ -399,7 +399,7 @@ RUN conda install --quiet --yes \
 
 # Check compatibility here: https://pytorch.org/get-started/locally/
 RUN conda install --quiet --yes \
-     pytorch==1.6.0 \ 
+     pytorch==1.6.0 \
      torchvision \
      cudatoolkit=10.1 -c pytorch
 #    pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cu90/torch_nightly.html && \
@@ -412,7 +412,7 @@ RUN conda clean --all -f -y && \
   ############################################################################
   ############################ Useful packages ###############################
   ############################################################################
-  
+
 LABEL maintainer="Christoph Schranz <christoph.schranz@salzburgresearch.at>"
 
 USER root
@@ -437,10 +437,10 @@ RUN set -ex \
 # Install various extensions
 RUN fix-permissions $CONDA_DIR
 RUN jupyter labextension install @jupyterlab/github
-RUN jupyter labextension install jupyterlab-drawio
-RUN jupyter labextension install jupyter-leaflet
-RUN jupyter labextension install jupyterlab-plotly@4.8.1
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+RUN jupyter labextension install --minimize=False jupyterlab-drawio
+RUN jupyter labextension install --minimize=False jupyter-leaflet
+RUN jupyter labextension install --minimize=False jupyterlab-plotly@4.8.1
+RUN jupyter labextension install --minimize=False @jupyter-widgets/jupyterlab-manager
 RUN pip install --no-cache-dir jupyter-tabnine==1.0.2  && \
   jupyter nbextension install --py jupyter_tabnine && \
   jupyter nbextension enable --py jupyter_tabnine && \
@@ -448,14 +448,16 @@ RUN pip install --no-cache-dir jupyter-tabnine==1.0.2  && \
 RUN pip install --no-cache-dir jupyter_contrib_nbextensions \
  jupyter_nbextensions_configurator rise && \
   jupyter nbextension enable codefolding/main
-RUN jupyter labextension install @ijmbarr/jupyterlab_spellchecker
+RUN jupyter labextension install --minimize=False @ijmbarr/jupyterlab_spellchecker
 RUN pip install --no-cache-dir jupyter-server-proxy && \
   jupyter serverextension enable --sys-prefix jupyter_server_proxy
 RUN jupyter serverextension enable --py jupyter_server_proxy
-RUN jupyter labextension install @jupyterlab/server-proxy
+RUN jupyter labextension install --minimize=False @jupyterlab/server-proxy
 RUN pip install jupyter-vscode-proxy
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 RUN pip install git+https://github.com/steven-hh-ding/jupyter-slack-notify
+RUN jupyter labextension install --minimize=False @lckr/jupyterlab_variableinspector
+RUN jupyter labextension install --minimize=False @jupyterlab/shortcutui
 
 ## cuda nn:
 # RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
@@ -477,10 +479,10 @@ RUN apt-get install -y --no-install-recommends \
 
 
 ## ssh
-RUN apt-get install -y openssh-client vim 
+RUN apt-get install -y openssh-client vim
 
-RUN conda install --quiet --yes \ 
-     nb_conda_kernels 
+RUN conda install --quiet --yes \
+     nb_conda_kernels
 
 # Clean installation
 RUN conda clean --all -f -y && \
