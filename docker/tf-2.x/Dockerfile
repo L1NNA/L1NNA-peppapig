@@ -437,10 +437,10 @@ RUN set -ex \
 # Install various extensions
 RUN fix-permissions $CONDA_DIR
 RUN jupyter labextension install @jupyterlab/github
-RUN jupyter labextension install --minimize=False jupyterlab-drawio
-RUN jupyter labextension install --minimize=False jupyter-leaflet
-RUN jupyter labextension install --minimize=False jupyterlab-plotly@4.8.1
-RUN jupyter labextension install --minimize=False @jupyter-widgets/jupyterlab-manager
+RUN jupyter labextension install  jupyterlab-drawio
+RUN jupyter labextension install  jupyter-leaflet
+RUN jupyter labextension install  jupyterlab-plotly@4.8.1
+RUN jupyter labextension install  @jupyter-widgets/jupyterlab-manager
 RUN pip install --no-cache-dir jupyter-tabnine==1.0.2  && \
   jupyter nbextension install --py jupyter_tabnine && \
   jupyter nbextension enable --py jupyter_tabnine && \
@@ -448,16 +448,16 @@ RUN pip install --no-cache-dir jupyter-tabnine==1.0.2  && \
 RUN pip install --no-cache-dir jupyter_contrib_nbextensions \
  jupyter_nbextensions_configurator rise && \
   jupyter nbextension enable codefolding/main
-RUN jupyter labextension install --minimize=False @ijmbarr/jupyterlab_spellchecker
+RUN jupyter labextension install  @ijmbarr/jupyterlab_spellchecker
 RUN pip install --no-cache-dir jupyter-server-proxy && \
   jupyter serverextension enable --sys-prefix jupyter_server_proxy
 RUN jupyter serverextension enable --py jupyter_server_proxy
-RUN jupyter labextension install --minimize=False @jupyterlab/server-proxy
+RUN jupyter labextension install  @jupyterlab/server-proxy
 RUN pip install jupyter-vscode-proxy
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 RUN pip install git+https://github.com/steven-hh-ding/jupyter-slack-notify
-RUN jupyter labextension install --minimize=False @lckr/jupyterlab_variableinspector
-RUN jupyter labextension install --minimize=False @jupyterlab/shortcutui
+RUN jupyter labextension install  @lckr/jupyterlab_variableinspector
+RUN jupyter labextension install @jupyterlab/shortcutui
 
 ## cuda nn:
 # RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb

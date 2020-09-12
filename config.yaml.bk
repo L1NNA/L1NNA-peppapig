@@ -5,6 +5,8 @@ proxy:
     nodePorts:
       http: 30080
       https: 30443
+cull:
+  timeout: 86400
 hub:
   #Clone custom JupyterHub templates into a volume
   initContainers:
@@ -100,12 +102,10 @@ singleuser:
   lifecycleHooks:
     postStart:
       exec:
-        command: ["conda", "config"]
-        command: ["echo", "'env_dirs'", ">", "~/.condarc"]
-        command: ["echo", "'  -home/jovyan/user-conda-envs/'", ">>", "~/.condarc"]
+        command: ["wget", "-O", "/home/jovyan/.condarc", "https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/.condarc"] 
   image: 
     name: l1nna/peppapig
-    tag: tf2.3-v0.0.3
+    tag: tf2.3-torch1.4-v0.0.5
   defaultUrl: "/lab"
   extraEnv:
     GRANT_SUDO: "yes"
