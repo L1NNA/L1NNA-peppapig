@@ -475,6 +475,7 @@
         {% if user %}
         <ul class="nav navbar-nav">
           {% block nav_bar_left_items %}
+         <li class="nav-item"><a class="nav-link" href="{{base_url}}spawn">Spawn</a></li>
           <li class="nav-item"><a class="nav-link" href="{{base_url}}home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="{{base_url}}token">Token</a></li>
           {% if user.admin %}
