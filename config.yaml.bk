@@ -34,7 +34,27 @@ hub:
 
   extraConfig:
     templates: |
+      c.JupyterHub.default_url = 'landing'
       c.JupyterHub.template_paths = ['/etc/jupyterhub/custom/hub_templates_bt4/']
+    landing: |
+      from jupyterhub.handlers.base import BaseHandler
+
+      class LandingHandler(BaseHandler):
+        def get(self): 
+          content = self.render_template(
+              'login.html',
+              authenticator_login_url="https://p.l1nna.com/hub/oauth_login?next=" 
+          )
+          self.finish(content)
+            
+
+      c.JupyterHub.extra_handlers = [
+        (
+            r'/landing',
+            LandingHandler
+        ),
+      ]
+      
     debug: |
       # Set the log level by value or name.
       c.JupyterHub.log_level = 'DEBUG'
