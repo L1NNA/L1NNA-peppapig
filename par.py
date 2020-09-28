@@ -21,7 +21,7 @@ for i, (s, e) in enumerate(zip(range(0, 100, step), range(step, 100+step, step))
         'sudo mkfs.ext4 -L data-{}-{} {}{}'.format(storage, i+1, device, i+1))
     mn_cmd.append('sudo mkdir -p /media/{}{}'.format(storage, start+i+1))
     tb_cmd.append(
-        '{}{} /media/{}{} ext4 defaults 0 0'.format(device, i+1, storage, i+1))
+        '{}{} /media/{}{} ext4 defaults 0 0'.format(device, start+i+1, storage, i+1))
 
 print('# running', partition_cmd)
 subprocess.Popen(
