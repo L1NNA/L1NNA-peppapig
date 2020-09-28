@@ -4,6 +4,8 @@ storage:
    - lxdragoon
    - leordsong
    - reetamtaj
+  lg:
+    - ''
 
 from_data: | 
   <div class="form-group">
