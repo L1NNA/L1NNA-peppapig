@@ -479,7 +479,7 @@ RUN apt-get install -y --no-install-recommends \
 
 
 ## ssh
-RUN apt-get install -y openssh-client vim
+RUN apt-get install -y openssh-client vim tmux 
 
 RUN conda install --quiet --yes \
      nb_conda_kernels
