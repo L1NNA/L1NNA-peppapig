@@ -15,6 +15,9 @@ Partition new hardrive into equal parititions and mount them to /media/ (labeled
 sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEl
 sudo wipefs -a /dev/sdx
 python3 par.py /dev/sdx 4 md
+sudo vim /etc/fstab
+[editing]
+sudo mount -a
 ```
 Statically provision persistent volumes (based on each partitions under /media/)
 ```
