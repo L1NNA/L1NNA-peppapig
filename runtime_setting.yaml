@@ -43,7 +43,10 @@ from_data: |
             <div class="form-group">
               <label for="inputRAM">RAM to be allocated</label>
               <select name="mem_limit" class="form-control" id="inputRAM" aria-describedby="emailHelp">
-                <option value="100G" selected="selected">100G RAM</option>
+                <option value="16G" selected="selected">16 RAM</option>
+                <option value="32G">32G RAM</option>
+                <option value="64G">64G RAM</option>
+                <option value="100G">100G RAM</option>
                 <option value="200G">200G RAM</option>
                 <option value="300G">300G RAM</option>
               </select>
