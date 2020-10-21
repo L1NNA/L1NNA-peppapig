@@ -20,7 +20,8 @@ from_data: |
   <div class="form-group">
               <label for="inputCPU">Number of CPU Cores</label>
               <select name="cpu_limit" class="form-control" id="inputCPU" aria-describedby="emailHelp">
-                <option value="4" select="selected">4 cores Xeon Gold 2.3/3.9GHz</option>
+                <option value="2" select="selected">2 cores Xeon Gold 2.3/3.9GHz</option>
+                <option value="4" >4 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="8" >8 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="16">16 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="32">32 cores Xeon Gold 2.3/3.9GHz</option>
@@ -32,10 +33,10 @@ from_data: |
             <div class="form-group">
               <label for="inputGPU">Number of GPU accelerators</label>
               <select name="gpu_limit" class="form-control" id="inputGPU" aria-describedby="emailHelp">
-                <option value="1" selected="selected">1 RTX6000 (24G)</option>
+                <option value="1">1 RTX6000 (24G)</option>
                 <option value="2">2 RTX6000 (24G)</option>
                 <option value="4">4 RTX6000 (24G)</option>
-                <option value="0">I don't need a GPU for now.</option>
+                <option value="0" selected="selected">I don't need a GPU for now.</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">The number of physical GPU devices to be allocated.</small>
             </div>
