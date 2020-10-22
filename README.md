@@ -34,6 +34,8 @@ curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_jhub.sh
 ##   kubectl logs $(kubectl get pods -n jhub | grep hub | awk '{print $1;}') -n jhub --follow
 ## update config.yaml:
 ##   RELEASE=jhub ; NAMESPACE=jhub ; helm upgrade $RELEASE jupyterhub/jupyterhub --version=0.9.0  --values config.yaml --recreate-pods
+## update/add shared volumn:
+##   kubectl apply -f  shared_pvc.yaml
 ```
 
 
