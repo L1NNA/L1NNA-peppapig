@@ -123,6 +123,7 @@ singleuser:
     postStart:
       exec:
         command: ["wget", "-O", "/home/jovyan/.condarc", "https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/.condarc"] 
+        command: ["sudo", "wget", "-O", "/opt/conda/.condarc", "https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/.condarc-opt"] 
   image: 
     name: l1nna/peppapig
     tag: tf2.3-torch1.4-v0.0.5
@@ -136,3 +137,17 @@ singleuser:
   storage:
     dynamic:
       storageClass: local-hdd-sm
+    extraVolumes:
+      - name: shared-data
+        persistentVolumeClaim: 
+          claimName: "shared-data"
+          namespace: "jhub"
+      - name: shared-data-gw
+        persistentVolumeClaim: 
+          claimName: "shared-data-gw"
+          namespace: "jhub"
+    extraVolumeMounts:
+      - name: shared-data
+        mountPath: "/home/shared-data"
+      - name: shared-data-gw
+        mountPath: "/home/shared-data-gw"

@@ -18,10 +18,10 @@ start = max(names)
 for i, (s, e) in enumerate(zip(range(0, 100, step), range(step, 100+step, step))):
     partition_cmd += ' mkpart primary ext4 {}% {}%'.format(s, e)
     fs_cmd.append(
-        'sudo mkfs.ext4 -L data-{}-{} {}{}'.format(storage, i+1, device, i+1))
+        'sudo mkfs.ext4 -L data-{}-{} {}{}'.format(storage, start+i+1, device, i+1))
     mn_cmd.append('sudo mkdir -p /media/{}{}'.format(storage, start+i+1))
     tb_cmd.append(
-        '{}{} /media/{}{} ext4 defaults 0 0'.format(device, start+i+1, storage, i+1))
+            '{}{} /media/{}{} ext4 defaults 0 0'.format(device, i+1, storage, start+i+1))
 
 print('# running', partition_cmd)
 subprocess.Popen(
@@ -30,12 +30,14 @@ subprocess.Popen(
 print('# running', fs_cmd)
 for c in fs_cmd:
     subprocess.Popen(
-        c.split(' ')).communicate()
+      c.split(' ')).communicate()
+    print(c)
 
 print('# running:', mn_cmd)
 for c in mn_cmd:
     subprocess.Popen(
         c.split(' ')).communicate()
+    print(c)
 
 print('# ftab updates')
 for f in tb_cmd:
