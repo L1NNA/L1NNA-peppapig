@@ -24,6 +24,7 @@ from_data: |
                 <option value="l1nna/peppapig:tf2.3-torch1.6-v0.0.2" select="selected">l1nna/peppapig Tensorflow-2.3 Pytorch-1.6 DS stack v0.0.2</option>
                 <option value="l1nna/peppapig:tf2.3-torch1.4-v0.0.5">l1nna/peppapig Tensorflow-2.3 Pytorch-1.4 DS stack v0.0.5</option>
                 <option value="l1nna/peppapig:tf2.4-v0.0.1">l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.1</option>
+                <option value="l1nna/peppapig:tf2.4-v0.0.2">l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.2</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">Included most of the dependencies you would need. For a custom base image, please pin us on slack.</small>
               </div>
