@@ -20,9 +20,9 @@ from_data: |
   <div class="form-group">
               <label for="inputIMG">Base docker image to be deployed</label>
               <select name="image" class="form-control" id="inputIMG" aria-describedby="emailHelp">
-                <option value="l1nna/peppapig:tf2.4-v0.0.2" select="selected">l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.2</option>
+                <option value="l1nna/peppapig:tf2.4-v0.0.5" select="selected">l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.5</option>
+                <option value="l1nna/peppapig:tf2.4-v0.0.2" >l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.2</option>
                 <option value="l1nna/peppapig:tf2.4-v0.0.3" >l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.3</option>
-                <option value="l1nna/peppapig:tf2.4-v0.0.5" >l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.5</option>
                 <option value="l1nna/peppapig:tf2.3-torch1.6-v0.0.1">l1nna/peppapig Tensorflow-2.3 Pytorch-1.6 DS stack v0.0.1</option>
                 <option value="l1nna/peppapig:tf2.3-torch1.6-v0.0.2">l1nna/peppapig Tensorflow-2.3 Pytorch-1.6 DS stack v0.0.2</option>
                 <option value="l1nna/peppapig:tf2.3-torch1.4-v0.0.5">l1nna/peppapig Tensorflow-2.3 Pytorch-1.4 DS stack v0.0.5</option>
