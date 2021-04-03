@@ -146,8 +146,13 @@ singleuser:
         persistentVolumeClaim: 
           claimName: "shared-data-gw"
           namespace: "jhub"
+      - name: shm-volume
+        emptyDir:
+          medium: Memory
     extraVolumeMounts:
       - name: shared-data
         mountPath: "/home/shared-data"
       - name: shared-data-gw
         mountPath: "/home/shared-data-gw"
+      - name: shm-volume
+        mountPath: /dev/shm
