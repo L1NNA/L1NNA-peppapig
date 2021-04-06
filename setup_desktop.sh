@@ -1,7 +1,7 @@
 #!/bin/sh
 # curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/setup_driver.sh | bash
 
-DIR="~/.config/xfce4"
+DIR="/home/jovyan/.config/xfce4"
 
 if [ -d "$DIR" ]; then
   # Take action if $DIR exists. #
