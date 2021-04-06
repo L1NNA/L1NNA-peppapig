@@ -9,7 +9,7 @@ if [ -d "$DIR" ]; then
 else
   ###  Control will jump here if $DIR does NOT exists ###
   echo "Initizlizing..."
-  mkdir "$DIR"
+  mkdir -p "$DIR"
   wget -O $DIR/xfconf.zip https://github.com/L1NNA/L1NNA-peppapig/releases/download/dot/xfconf.zip
   unzip $DIR/xfconf.zip -d $DIR/
 fi
