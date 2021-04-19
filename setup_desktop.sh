@@ -20,4 +20,4 @@ fi
 
 
 # update jvd:
-pip install -q --upgrade  git+https://github.com/L1NNA/JARV1S-Ghidra@master
+pip uninstall -y jvd && pip install -q git+https://github.com/L1NNA/JARV1S-Ghidra@master
