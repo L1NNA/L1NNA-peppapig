@@ -17,3 +17,7 @@ else
   wget -O $DIR/xfce4.zip https://github.com/L1NNA/L1NNA-peppapig/releases/download/dot/xfce4.zip
   unzip $DIR/xfce4.zip -d $DIR/
 fi
+
+
+# update jvd:
+pip install -q --upgrade  git+https://github.com/L1NNA/JARV1S-Ghidra@master
