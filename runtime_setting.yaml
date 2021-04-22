@@ -38,8 +38,12 @@ from_data: |
               <select name="cpu_limit" class="form-control" id="inputCPU" aria-describedby="emailHelp">
                 <option value="2" select="selected">2 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="4" >4 cores Xeon Gold 2.3/3.9GHz</option>
+                <option value="6" >6 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="8" >8 cores Xeon Gold 2.3/3.9GHz</option>
+                <option value="12">12 cores Xeon Gold 2.3/3.9GHz</option>
+                <option value="14">14 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="16">16 cores Xeon Gold 2.3/3.9GHz</option>
+                 <option value="18">18 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="32">32 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="48">48 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="56">56 cores Xeon Gold 2.3/3.9GHz</option>
