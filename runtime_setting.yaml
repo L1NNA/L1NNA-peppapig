@@ -72,6 +72,7 @@ from_data: |
                 <option value="200G">200G RAM</option>
                 <option value="300G">300G RAM</option>
                 <option value="400G">400G RAM</option>
+                <option value="400G">500G RAM</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">The amount of memory to be allocated.</small>
             </div>
