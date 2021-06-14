@@ -20,4 +20,5 @@ fi
 
 
 # update jvd:
-pip uninstall -y jvd && pip install -q git+https://github.com/L1NNA/JARV1S-Ghidra@master
+/usr/bin/python3 -m pip uninstall -y jvd && pip install -q git+https://github.com/L1NNA/JARV1S-Ghidra@master
+
