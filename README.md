@@ -115,3 +115,9 @@ http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kube
 kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
 
 ```
+
+New pvc:
+```
+kubectl create -f shared_pvc.yaml
+
+```
