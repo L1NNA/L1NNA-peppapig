@@ -25,10 +25,6 @@ from_data: |
               <select name="image" class="form-control" id="inputIMG" aria-describedby="emailHelp">
                 <option value="l1nna/peppapig:tf2.4-v0.0.8" select="selected">l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.8</option>
                 <option value="l1nna/peppapig:tf2.4-v0.0.7">l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.7</option>
-                <option value="l1nna/peppapig:tf2.4-v0.0.5">l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.5</option>
-                <option value="l1nna/peppapig:tf2.4-v0.0.6">l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.6</option>
-                <option value="l1nna/peppapig:tf2.4-v0.0.2" >l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.2</option>
-                <option value="l1nna/peppapig:tf2.4-v0.0.3" >l1nna/peppapig Tensorflow-2.4.1 DS stack v0.0.3</option>
                 <option value="l1nna/peppapig:tf2.3-torch1.6-v0.0.1">l1nna/peppapig Tensorflow-2.3 Pytorch-1.6 DS stack v0.0.1</option>
                 <option value="l1nna/peppapig:tf2.3-torch1.6-v0.0.2">l1nna/peppapig Tensorflow-2.3 Pytorch-1.6 DS stack v0.0.2</option>
                 <option value="l1nna/peppapig:tf2.3-torch1.4-v0.0.5">l1nna/peppapig Tensorflow-2.3 Pytorch-1.4 DS stack v0.0.5</option>
@@ -60,7 +56,7 @@ from_data: |
                 <option value="2">2 RTX6000 (24G)</option>
                 <option value="3">3 RTX6000 (24G)</option>
                 <option value="4">4 RTX6000 (24G)</option>
-                <option value="5">4 RTX6000 (24G)</option>
+                <option value="5">5 RTX6000 (24G)</option>
                 <option value="0" selected="selected">I don't need a GPU for now.</option>
               </select>
               <small id="cpuHelp" class="form-text text-muted">The number of physical GPU devices to be allocated.</small>
