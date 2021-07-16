@@ -23,4 +23,9 @@ fi
 # /usr/bin/python3 -m pip install -U pip
 # /usr/bin/python3 -m pip uninstall -y jvd 
 # /usr/bin/python3 -m pip install -q git+https://github.com/L1NNA/JARV1S-Ghidra@master
+if ! command -v /usr/bin/python3 &> /dev/null
+then
+    echo "COMMAND could not be found"
+    exit
+fi
 /usr/bin/python3 -m pip install -q git+https://github.com/L1NNA/JARV1S-Ghidra@master
