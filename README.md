@@ -121,3 +121,10 @@ New pvc:
 kubectl create -f shared_pvc.yaml
 
 ```
+
+### Minio
+
+Tenant UI:
+```
+kubectl minio proxy -n minio-operator
+```
