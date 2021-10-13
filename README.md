@@ -125,6 +125,10 @@ kubectl create -f shared_pvc.yaml
 ### Minio
 
 Tenant UI:
+
+https://github.com/minio/direct-csi/blob/master/docs/cli.md
+
+
 ```
 kubectl minio proxy -n minio-operator
 ```
