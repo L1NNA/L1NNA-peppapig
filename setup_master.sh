@@ -37,6 +37,7 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker && sudo systemctl start docker
 sudo systemctl enable kubelet && sudo systemctl start kubelet
 
+# fix docker cgroup: https://github.com/kubernetes/kubernetes/issues/43805#issuecomment-907734385
 # sudo kubeadm init --apiserver-advertise-address=$1
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 # - kubeadm docs
