@@ -39,6 +39,8 @@ sudo systemctl enable kubelet && sudo systemctl start kubelet
 
 # fix docker cgroup: https://github.com/kubernetes/kubernetes/issues/43805#issuecomment-907734385
 # https://stackoverflow.com/questions/43794169/docker-change-cgroup-driver-to-systemd
+sudo curl https://raw.githubusercontent.com/L1NNA/L1NNA-peppapig/master/deamon.json > /etc/docker/daemon.json 
+sudo systemctl restart docker
 # sudo kubeadm init --apiserver-advertise-address=$1
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 # - kubeadm docs
