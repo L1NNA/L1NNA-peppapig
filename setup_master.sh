@@ -58,6 +58,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 sudo systemctl restart kubelet
 
 # enalbe pod deployment on master node: [optional, but needed for our setup]
+# for multi-node setup, we cannot use this otherwise the other nodes cannot join
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
 # install helm:
