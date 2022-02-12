@@ -50,6 +50,7 @@ gpu=$(nvidia-smi -q | grep 'Product Name' | head -n 1 | cut -d ':' -f 2 | xargs 
 label=$(echo ${gpu// /-})
 echo $label
 kubectl label nodes bootstrap "nvidia.com/brand=${label}"
+kubectl get nodes --show-labels 
 ```
 
 
