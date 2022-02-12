@@ -143,4 +143,7 @@ helm repo update
 helm install longhorn/longhorn --name longhorn --namespace longhorn-system --set service.ui.nodePort=30001 --set service.ui.type=NodePort
 
 kubectl -n longhorn-system  rollout restart deploy
+
+#check if all pods are good:
+kubectl -n longhorn-system get daemonset
 ```
