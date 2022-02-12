@@ -140,5 +140,5 @@ apt-get install open-iscsi
 
 helm repo add longhorn https://charts.longhorn.io
 helm repo update
-helm install longhorn/longhorn --name longhorn --namespace longhorn-system --set service.ui.nodePort=8081 --set service.ui.type=NodePort
+helm install longhorn/longhorn --name longhorn --namespace longhorn-system --set service.ui.nodePort=30001 --set service.ui.type=NodePort
 ```
