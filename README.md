@@ -185,5 +185,10 @@ docker build -t l1nna/peppapig:tf2.3-torch1.6-v0.0.2 .
 docker push l1nna/peppapig:tf2.3-torch1.6-v0.0.2
 ```
 
+### Monitoring
+```
+https://stackoverflow.com/questions/65076998/how-to-scale-azures-kubernetes-service-aks-based-on-gpu-metrics/66798158#66798158
+
+```
 
 
