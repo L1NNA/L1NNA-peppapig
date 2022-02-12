@@ -146,4 +146,18 @@ kubectl -n longhorn-system  rollout restart deploy
 
 #check if all pods are good:
 kubectl -n longhorn-system get daemonset
+
+
+# new disk:
+sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEl
+sudo parted -s --align optimal /dev/sdb -- mklabel gpt  mkpart primary ext4 0% 100%
+sudo mkfs.ext4 /dev/sdb1
+sudo mkdir -p /media/sdb/
+sudo vim /etc/fstab
+# add: /dev/sdb1 /media/sdb ext4 defaults 0 0
+sudo mount -a
+
+# then go to the web ui and add disk to node
 ```
+
+
