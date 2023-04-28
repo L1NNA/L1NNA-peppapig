@@ -22,6 +22,9 @@ storage:
    - chrisjmolloy
 
 from_data: | 
+  <script>
+    console.log('!!! testing')
+  </script>
   <div class="form-group">
               <label for="inputIMG">Base docker image to be deployed</label>
               <select name="image" class="form-control" id="inputIMG" aria-describedby="emailHelp">
