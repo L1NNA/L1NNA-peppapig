@@ -72,8 +72,7 @@ from_data: |
   <div class="form-group">
               <label for="inputCPU">Number of CPU Cores</label>
               <select name="cpu_limit" class="form-control" id="inputCPU" aria-describedby="emailHelp">
-                <option value="2" select="selected">2 cores Xeon Gold 2.3/3.9GHz</option>
-                <option value="4" >4 cores Xeon Gold 2.3/3.9GHz</option>
+                <option value="4" select="selected">4 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="6" >6 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="8" >8 cores Xeon Gold 2.3/3.9GHz</option>
                 <option value="12">12 cores Xeon Gold 2.3/3.9GHz</option>
